@@ -1,0 +1,14 @@
+<% if params[:q] then sites = HomeController.new; steps = sites.findSteps(params[:q]) %>
+<%= p "From " + params[:q] + " to Philosophy:" %><br/>
+<% steps.each do |site|%>
+	<%= p site%><br/>
+<% end %>
+<% else %>
+<%= form_tag("/", :method => "get") do %>
+  <%= label_tag(:q, "Find steps for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Count!") %>
+<% end %>
+<% end %>
+
+<a href="/">Try again</a>
